@@ -1,1386 +1,333 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+
+    <link href="./lib/css/reset.css" rel="stylesheet"/>
+    <link href="./lib/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <link href="./lib/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdn.rawgit.com/infostreams/bootstrap-select/fd227d46de2afed300d97fd0962de80fa71afb3b/dist/css/bootstrap-select.min.css"/>
+
+    <link href="./style.css" rel="stylesheet"/>
+    <!--libs-->
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/ICanHaz.min.js"></script>
+    <script src="lib/js/popper.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <!--<script src="lib/js/bootstrap-select.min.js"></script>-->
+
+    <!-- bootstrap-select -->
+    <script src="lib/js/bootstrap-select.min.js"></script>
+    <!--  sweet alert  -->
+    <script src="lib/js/sweetalert.min.js"></script>
 
-
-    <meta content="utf-8" http-equiv="encoding">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,
-		maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="white">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Desktop</title>
-
-
-    <link type="text/css" rel="stylesheet" href="./Trial_files/desk.min.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/list.min.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/form.min.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/report.min.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/module.min.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/erpnext.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/desk.css">
-    <link type="text/css" rel="stylesheet" href="./Trial_files/c3.min.css">
-    <style></style>
-    <style type="text/css">.chart-container {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
-    }
-    .main-container-space {
-        width: 100%;
-        height: 100%;
-        margin-top: 8.1%;
-    }
-    .chart-container .graph-focus-margin {
-        margin: 0 5%
-    }
-    body{
-        overflow-y:hidden;
-    }
-    .chart-container > .title {
-        margin-top: 25px;
-        margin-left: 25px;
-        text-align: left;
-        font-weight: 400;
-        font-size: 12px;
-        color: #6c7680
-    }
-
-    .chart-container .graphics {
-        margin-top: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        position: relative
-    }
-
-    .chart-container .graph-stats-group {
-        -ms-flex-pack: distribute;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1
-    }
-
-    .chart-container .graph-stats-container, .chart-container .graph-stats-group {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        justify-content: space-around
-    }
-
-    .chart-container .graph-stats-container {
-        -ms-flex-pack: distribute;
-        padding-top: 10px
-    }
-
-    .chart-container .graph-stats-container .stats {
-        padding-bottom: 15px
-    }
-
-    .chart-container .graph-stats-container .stats-title {
-        color: #8d99a6
-    }
-
-    .chart-container .graph-stats-container .stats-value {
-        font-size: 20px;
-        font-weight: 300
-    }
-
-    .chart-container .graph-stats-container .stats-description {
-        font-size: 12px;
-        color: #8d99a6
-    }
-
-    .chart-container .graph-stats-container .graph-data .stats-value {
-        color: #98d85b
-    }
-
-    .chart-container .axis, .chart-container .chart-label {
-        font-size: 11px;
-        fill: #555b51
-    }
-
-    .chart-container .axis line, .chart-container .chart-label line {
-        stroke: #dadada
-    }
-
-    .chart-container .percentage-graph .progress {
-        margin-bottom: 0
-    }
-
-    .chart-container .data-points circle {
-        stroke: #fff;
-        stroke-width: 2
-    }
-
-    .chart-container .path-group path {
-        fill: none;
-        stroke-opacity: 1;
-        stroke-width: 2px
-    }
-
-    .chart-container line.dashed {
-        stroke-dasharray: 5, 3
-    }
-
-    .chart-container .tick.x-axis-label {
-        display: block
-    }
-
-    .chart-container .tick .specific-value {
-        text-anchor: start
-    }
-
-    .chart-container .tick .y-value-text {
-        text-anchor: end
-    }
-
-    .chart-container .tick .x-value-text {
-        text-anchor: middle
-    }
-
-    .chart-container .progress {
-        height: 20px;
-        margin-bottom: 20px;
-        overflow: hidden;
-        background-color: #f5f5f5;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
-    }
-
-    .chart-container .progress-bar {
-        float: left;
-        width: 0;
-        height: 100%;
-        font-size: 12px;
-        line-height: 20px;
-        color: #fff;
-        text-align: center;
-        background-color: #36414c;
-        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
-        -webkit-transition: width .6s ease;
-        transition: width .6s ease
-    }
-
-    .chart-container .graph-svg-tip {
-        position: absolute;
-        z-index: 1;
-        padding: 10px;
-        font-size: 12px;
-        color: #959da5;
-        text-align: center;
-        background: rgba(0, 0, 0, .8);
-        border-radius: 3px
-    }
-
-    .chart-container .graph-svg-tip ol, .chart-container .graph-svg-tip ul {
-        padding-left: 0;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex
-    }
-
-    .chart-container .graph-svg-tip ul.data-point-list li {
-        min-width: 90px;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        font-weight: 600
-    }
-
-    .chart-container .graph-svg-tip strong {
-        color: #dfe2e5;
-        font-weight: 600
-    }
-
-    .chart-container .graph-svg-tip .svg-pointer {
-        position: absolute;
-        height: 5px;
-        margin: 0 0 0 -5px;
-        content: " ";
-        border: 5px solid transparent;
-        border-top-color: rgba(0, 0, 0, .8)
-    }
-
-    .chart-container .graph-svg-tip.comparison {
-        padding: 0;
-        text-align: left;
-        pointer-events: none
-    }
-
-    .chart-container .graph-svg-tip.comparison .title {
-        display: block;
-        padding: 10px;
-        margin: 0;
-        font-weight: 600;
-        line-height: 1;
-        pointer-events: none
-    }
-
-    .chart-container .graph-svg-tip.comparison ul {
-        margin: 0;
-        white-space: nowrap;
-        list-style: none
-    }
-
-    .chart-container .graph-svg-tip.comparison li {
-        display: inline-block;
-        padding: 5px 10px
-    }
-
-    .chart-container .indicator, .chart-container .indicator-right {
-        background: none;
-        font-size: 12px;
-        vertical-align: middle;
-        font-weight: 700;
-        color: #6c7680
-    }
-
-    .chart-container .indicator i {
-        content: "";
-        display: inline-block;
-        height: 8px;
-        width: 8px;
-        border-radius: 8px
-    }
-
-    .chart-container .indicator:before, .chart-container .indicator i {
-        margin: 0 4px 0 0
-    }
-
-    .chart-container .indicator-right:after {
-        margin: 0 0 0 4px
-    }</style>
-    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
-    .en-markup-crop-options {
-        top: 18px !important;
-        left: 50% !important;
-        margin-left: -100px !important;
-        width: 200px !important;
-        border: 2px rgba(255, 255, 255, .38) solid !important;
-        border-radius: 4px !important;
-    }
-
-    .en-markup-crop-options div div:first-of-type {
-        margin-left: 0px !important;
-    }
-    </style>
-    <style type="text/css">.chart-container {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
-    }
-
-    .chart-container .graph-focus-margin {
-        margin: 0 5%
-    }
-
-    .chart-container > .title {
-        margin-top: 25px;
-        margin-left: 25px;
-        text-align: left;
-        font-weight: 400;
-        font-size: 12px;
-        color: #6c7680
-    }
-
-    .chart-container .graphics {
-        margin-top: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        position: relative
-    }
-
-    .chart-container .graph-stats-group {
-        -ms-flex-pack: distribute;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1
-    }
-
-    .chart-container .graph-stats-container, .chart-container .graph-stats-group {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        justify-content: space-around
-    }
-
-    .chart-container .graph-stats-container {
-        -ms-flex-pack: distribute;
-        padding-top: 10px
-    }
-
-    .chart-container .graph-stats-container .stats {
-        padding-bottom: 15px
-    }
-
-    .chart-container .graph-stats-container .stats-title {
-        color: #8d99a6
-    }
-
-    .chart-container .graph-stats-container .stats-value {
-        font-size: 20px;
-        font-weight: 300
-    }
-
-    .chart-container .graph-stats-container .stats-description {
-        font-size: 12px;
-        color: #8d99a6
-    }
-
-    .chart-container .graph-stats-container .graph-data .stats-value {
-        color: #98d85b
-    }
-
-    .chart-container .axis, .chart-container .chart-label {
-        font-size: 11px;
-        fill: #555b51
-    }
-
-    .chart-container .axis line, .chart-container .chart-label line {
-        stroke: #dadada
-    }
-
-    .chart-container .percentage-graph .progress {
-        margin-bottom: 0
-    }
-
-    .chart-container .data-points circle {
-        stroke: #fff;
-        stroke-width: 2
-    }
-
-    .chart-container .path-group path {
-        fill: none;
-        stroke-opacity: 1;
-        stroke-width: 2px
-    }
-
-    .chart-container line.dashed {
-        stroke-dasharray: 5, 3
-    }
-
-    .chart-container .tick.x-axis-label {
-        display: block
-    }
-
-    .chart-container .tick .specific-value {
-        text-anchor: start
-    }
-
-    .chart-container .tick .y-value-text {
-        text-anchor: end
-    }
-
-    .chart-container .tick .x-value-text {
-        text-anchor: middle
-    }
-
-    .chart-container .progress {
-        height: 20px;
-        margin-bottom: 20px;
-        overflow: hidden;
-        background-color: #f5f5f5;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
-    }
-
-    .chart-container .progress-bar {
-        float: left;
-        width: 0;
-        height: 100%;
-        font-size: 12px;
-        line-height: 20px;
-        color: #fff;
-        text-align: center;
-        background-color: #36414c;
-        -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
-        -webkit-transition: width .6s ease;
-        transition: width .6s ease
-    }
-
-    .chart-container .graph-svg-tip {
-        position: absolute;
-        z-index: 1;
-        padding: 10px;
-        font-size: 12px;
-        color: #959da5;
-        text-align: center;
-        background: rgba(0, 0, 0, .8);
-        border-radius: 3px
-    }
-
-    .chart-container .graph-svg-tip ol, .chart-container .graph-svg-tip ul {
-        padding-left: 0;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex
-    }
-
-    .chart-container .graph-svg-tip ul.data-point-list li {
-        min-width: 90px;
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        font-weight: 600
-    }
-
-    .chart-container .graph-svg-tip strong {
-        color: #dfe2e5;
-        font-weight: 600
-    }
-
-    .chart-container .graph-svg-tip .svg-pointer {
-        position: absolute;
-        height: 5px;
-        margin: 0 0 0 -5px;
-        content: " ";
-        border: 5px solid transparent;
-        border-top-color: rgba(0, 0, 0, .8)
-    }
-
-    .chart-container .graph-svg-tip.comparison {
-        padding: 0;
-        text-align: left;
-        pointer-events: none
-    }
-
-    .chart-container .graph-svg-tip.comparison .title {
-        display: block;
-        padding: 10px;
-        margin: 0;
-        font-weight: 600;
-        line-height: 1;
-        pointer-events: none
-    }
-
-    .chart-container .graph-svg-tip.comparison ul {
-        margin: 0;
-        white-space: nowrap;
-        list-style: none
-    }
-
-    .chart-container .graph-svg-tip.comparison li {
-        display: inline-block;
-        padding: 5px 10px
-    }
-
-    .chart-container .indicator, .chart-container .indicator-right {
-        background: none;
-        font-size: 12px;
-        vertical-align: middle;
-        font-weight: 700;
-        color: #6c7680
-    }
-
-    .chart-container .indicator i {
-        content: "";
-        display: inline-block;
-        height: 8px;
-        width: 8px;
-        border-radius: 8px
-    }
-
-    .chart-container .indicator:before, .chart-container .indicator i {
-        margin: 0 4px 0 0
-    }
-
-    .chart-container .indicator-right:after {
-        margin: 0 0 0 4px
-    }</style>
-    <style type="text/css" id="print-style">@media screen {
-        .print-format-gutter {
-            background-color: #ddd;
-            padding: 15px 0px;
-        }
-
-        .print-format {
-            background-color: white;
-            box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.5);
-            max-width: 8.3in;
-            min-height: 11.69in;
-            padding: 0.75in;
-            margin: auto;
-        }
-
-        .print-format.landscape {
-            max-width: 11.69in;
-            padding: 0.2in;
-        }
-
-        .page-break {
-            padding: 30px 0px;
-            border-bottom: 1px dashed #888;
-        }
-
-        .page-break:first-child {
-            padding-top: 0px;
-        }
-
-        .page-break:last-child {
-            border-bottom: 0px;
-        }
-
-        /* mozilla hack for images in table */
-        body:last-child .print-format td img {
-            width: 100% !important;
-        }
-
-        @media (max-width: 767px) {
-            .print-format {
-                padding: 0.2in;
-            }
-        }
-    }
-
-    @media print {
-        .print-format p {
-            margin-left: 1px;
-            margin-right: 1px;
-        }
-    }
-
-    .data-field {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    .data-field .value {
-        word-wrap: break-word;
-    }
-
-    .important .value {
-        font-size: 120%;
-        font-weight: bold;
-    }
-
-    .important label {
-        line-height: 1.8;
-        margin: 0px;
-    }
-
-    .table {
-        margin: 20px 0px;
-    }
-
-    .square-image {
-        width: 100%;
-        height: 0;
-        padding: 50% 0;
-        background-size: contain;
-        /*background-size: cover;*/
-        background-repeat: no-repeat !important;
-        background-position: center center;
-        border-radius: 4px;
-    }
-
-    .print-item-image {
-        object-fit: contain;
-    }
-
-    .pdf-variables,
-    .pdf-variable,
-    .visible-pdf {
-        display: none !important;
-    }
-
-    .print-format {
-        font-size: 9pt;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Open Sans", sans-serif;
-        -webkit-print-color-adjust: exact;
-    }
-
-    .page-break {
-        page-break-after: always;
-    }
-
-    .print-heading {
-        border-bottom: 1px solid #aaa;
-        margin-bottom: 10px;
-    }
-
-    .print-heading h2 {
-        margin: 0px;
-    }
-
-    .print-heading h4 {
-        margin-top: 5px;
-    }
-
-    table.no-border, table.no-border td {
-        border: 0px;
-    }
-
-    .print-format label {
-        /* wkhtmltopdf breaks label into multiple lines when it is inline-block */
-        display: block;
-    }
-
-    .print-format img {
-        max-width: 100%;
-    }
-
-    .print-format table td > .primary:first-child {
-        font-weight: bold;
-    }
-
-    .print-format td, .print-format th {
-        vertical-align: top !important;
-        padding: 6px !important;
-    }
-
-    .print-format p {
-        margin: 3px 0px 3px;
-    }
-
-    table td div {
-
-        /* needed to avoid partial cutting of text between page break in wkhtmltopdf */
-        page-break-inside: avoid !important;
-
-    }
-
-    /* hack for webkit specific browser */
-    @media (-webkit-min-device-pixel-ratio: 0) {
-        thead, tfoot {
-            display: table-row-group;
-        }
-    }
-
-    [document-status] {
-        margin-bottom: 5mm;
-    }
-
-    .signature-img {
-        background: #fff;
-        border-radius: 3px;
-        margin-top: 5px;
-        max-height: 150px;
-    }
-
-    .print-heading {
-        text-align: right;
-        text-transform: uppercase;
-        color: #666;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #d1d8dd;
-    }
-
-    .print-heading h2 {
-        font-size: 24px;
-    }
-
-    .print-format th {
-        background-color: #eee !important;
-        border-bottom: 0px !important;
-    }
-
-    /* modern format: for-test */</style>
-    <link rel="shortcut icon" href="http://18.217.245.26/assets/client/images/logo.png" type="image/x-icon">
-    <link rel="icon" href="http://18.217.245.26/assets/client/images/logo.png" type="image/x-icon">
-    <script>frappe.templates["desktop_module_icon"] = '<div class="case-wrapper" data-name="{{ module_name }}" data-link="{{ link }}" title="{{ _label }}"> {{ app_icon }} <div class="case-label ellipsis"> <div class="circle module-count-{{ _id }}" data-doctype="{{ _doctype }}" style="display: none;"> <span class="circle-text"></span> </div>  <span class="case-label-text">{{ _label }}</span> </div> </div> ';
-    frappe.templates["desktop_icon_grid"] = '<div style="text-align: center; padding-top: calc(40px + 3%)"> <div id="icon-grid"> {% for (var i=0, l=desktop_items.length; i < l; i++) { %} {{ frappe.render_template("desktop_module_icon", desktop_items[i]) }} {% } %} </div> <div class="help-message-wrapper hidden"> <div class="help-message-container"> <a class="close pull-right" style="margin-right: -7px;"> <i class="octicon octicon-x"></i></a> <div class="help-messages"> </div> <a class="left-arrow octicon octicon-chevron-left"> </a> <a class="right-arrow octicon octicon-chevron-right"> </a> </div> </div> </div> <div style="clear: both"></div> ';
-    frappe.templates["all_applications_dialog"] = '<div><input class="form-control desktop-app-search" type="text" placeholder="{%= __("Search Application") %}"> </div> {% if (frappe.user.has_role("System Manager")) { %} <p class="text-right"><a href="#applications" class="btn btn-sm btn-default">Install new applications</a> </p> {% } %} <hr> <p class="text-muted small">{%= __("Checked items will be shown on desktop") %}</p> <div class="list-group all-applications-list"> {% for(var i=0, l=all_modules.length; i < l; i++) { var module_name = all_modules[i]; var module = frappe.get_module(module_name); if (desktop_items.indexOf(module_name)===-1 || frappe.user.is_module_blocked(module_name)) { continue; } %} <div class="list-group-item" data-label="{%= module.label %}" data-name="{%= module.name %}"> <div class="checkbox"> <label> <input type="checkbox" {% if (user_desktop_items.indexOf(module.name)!==-1) { %} checked {% } %} data-name="{%= module.name %}" {{ module.force_show ? "disabled" : ""}}> {%= __(module.label) %} </label> </div> </div> {% } %} </div> ';
-    frappe.templates["desktop_help_message"] = '<div><span class="indicator blue">{{ title }}</span></div> <p>{{ description }}</p> <div> <a class="btn btn-sm btn-default" href="#{{ route }}">{{ action }}</a> <span class="help-progress" title="{{ __("You have made {0} of {1}", [count, target]) }}"> <span class="help-progress-bar" style="width: {{ Math.floor(count/target*100) }}%"></span> </span> </div>';
-    frappe.templates["desktop_list_view"] = '<div class="container page-body"> <div class="row"> <div class="layout-main-section"> <div class="page-content desktop-list" style="margin-top: 40px;"> {% for (var i=0, l=desktop_items.length; i < l; i++) { var module = desktop_items[i]; %} <div class="desktop-list-item" id="module-icon-{%= module._id %}" data-name="{%= module.name %}" data-link="{%= module.link %}" title="{%= module._label %}"> <h4> <i class="{{ module.icon }} text-muted" style="font-size: 20px; margin-right: 15px;"></i> {{ module._label }} </h4> <span class="open-notification global module-count-{{ module._id }}" style="display: none;"></span> </div> {% } %} </div> </div> </div> </div> ';
-    frappe.provide('frappe.desktop');
-
-    frappe.pages['desktop'].on_page_load = function (wrapper) {
-
-        // load desktop
-        if (!frappe.list_desktop) {
-            frappe.desktop.set_background();
-        }
-        frappe.desktop.refresh(wrapper);
-    };
-
-    frappe.pages['desktop'].on_page_show = function (wrapper) {
-        if (frappe.list_desktop) {
-            $("body").attr("data-route", "list-desktop");
-        }
-    };
-
-    $.extend(frappe.desktop, {
-        refresh: function (wrapper) {
-            if (wrapper) {
-                this.wrapper = $(wrapper);
-            }
-
-            this.render();
-            this.make_sortable();
-        },
-
-        render: function () {
-            var me = this;
-            frappe.utils.set_title(__("Desktop"));
-
-            var template = frappe.list_desktop ? "desktop_list_view" : "desktop_icon_grid";
-
-            var all_icons = frappe.get_desktop_icons();
-            var explore_icon = {
-                module_name: 'Explore',
-                label: 'Explore',
-                _label: __('Explore'),
-                _id: 'Explore',
-                _doctype: '',
-                icon: 'octicon octicon-telescope',
-                color: '#7578f6',
-                link: 'modules'
-            };
-            explore_icon.app_icon = frappe.ui.app_icon.get_html(explore_icon);
-            all_icons.push(explore_icon);
-
-            frappe.desktop.wrapper.html(frappe.render_template(template, {
-                // all visible icons
-                desktop_items: all_icons,
-            }));
-
-            frappe.desktop.setup_module_click();
-
-            // notifications
-            frappe.desktop.show_pending_notifications();
-            $(document).on("notification-update", function () {
-                me.show_pending_notifications();
-            });
-
-            $(document).trigger("desktop-render");
-
-        },
-
-        render_help_messages: function (help_messages) {
-            var wrapper = frappe.desktop.wrapper.find('.help-message-wrapper');
-            var $help_messages = wrapper.find('.help-messages');
-
-            var set_current_message = function (idx) {
-                idx = cint(idx);
-                wrapper.current_message_idx = idx;
-                wrapper.find('.left-arrow, .right-arrow').addClass('disabled');
-                wrapper.find('.help-message-item').addClass('hidden');
-                wrapper.find('[data-message-idx="' + idx + '"]').removeClass('hidden');
-                if (idx > 0) {
-                    wrapper.find('.left-arrow').removeClass('disabled');
-                }
-                if (idx < help_messages.length - 1) {
-                    wrapper.find('.right-arrow').removeClass('disabled');
-                }
-            }
-
-            if (help_messages) {
-                wrapper.removeClass('hidden');
-                help_messages.forEach(function (message, i) {
-                    var $message = $('<div class="help-message-item hidden"></div>')
-                        .attr('data-message-idx', i)
-                        .html(frappe.render_template('desktop_help_message', message))
-                        .appendTo($help_messages);
-
-                });
-
-                set_current_message(0);
-
-                wrapper.find('.close').on('click', function () {
-                    wrapper.addClass('hidden');
-                });
-            }
-
-            wrapper.find('.left-arrow').on('click', function () {
-                if (wrapper.current_message_idx) {
-                    set_current_message(wrapper.current_message_idx - 1);
-                }
-            })
-
-            wrapper.find('.right-arrow').on('click', function () {
-                if (help_messages.length > wrapper.current_message_idx + 1) {
-                    set_current_message(wrapper.current_message_idx + 1);
-                }
-            });
-
-        },
-
-        setup_module_click: function () {
-            frappe.desktop.wiggling = false;
-
-            if (frappe.list_desktop) {
-                frappe.desktop.wrapper.on("click", ".desktop-list-item", function () {
-                    frappe.desktop.open_module($(this));
-                });
-            } else {
-                frappe.desktop.wrapper.on("click", ".app-icon", function () {
-                    if (!frappe.desktop.wiggling) {
-                        frappe.desktop.open_module($(this).parent());
-                    }
-                });
-            }
-            frappe.desktop.wrapper.on("click", ".circle", function () {
-                var doctype = $(this).attr('data-doctype');
-                if (doctype) {
-                    frappe.ui.notifications.show_open_count_list(doctype);
-                }
-            });
-
-            frappe.desktop.setup_wiggle();
-        },
-
-        setup_wiggle: () = > {
-        // Wiggle, Wiggle, Wiggle.
-        const DURATION_LONG_PRESS = 1000;
-
-    var timer_id = 0;
-    const $cases = frappe.desktop.wrapper.find('.case-wrapper');
-    const $icons = frappe.desktop.wrapper.find('.app-icon');
-    const $notis = $(frappe.desktop.wrapper.find('.circle').toArray().filter((object) = > {
-        // This hack is so bad, I should punch myself.
-        // Seriously, punch yourself.
-        const text = $(object).find('.circle-text').html();
-
-    return text;
-    }))
-    ;
-
-    const clearWiggle = () =
-    >
-    {
-        const $closes = $cases.find('.module-remove');
-        $closes.hide();
-        $notis.show();
-
-        $icons.removeClass('wiggle');
-
-        frappe.desktop.wiggling = false;
-    }
-    ;
-
-    frappe.desktop.wrapper.on('mousedown', '.app-icon', () = > {
-        timer_id     = setTimeout(() = > {
-            frappe.desktop.wiggling = true;
-    // hide all notifications.
-    $notis.hide();
-
-    $cases.each((i) = > {
-        const $case = $($cases[i]);
-    const template =
-        `
-						<div class="circle module-remove" style="background-color:#E0E0E0; color:#212121">
-							<div class="circle-text">
-								<b>
-									&times
-								</b>
-							</div>
-						</div>
-					`;
-
-    $case.append(template);
-    const $close = $case.find('.module-remove');
-    const name = $case.attr('title');
-    $close.click(() = > {
-        // good enough to create dynamic dialogs?
-        const dialog = new frappe.ui.Dialog({
-            title: __(`Hide ${name}?`)
-        });
-    dialog.set_primary_action(__('Hide'), () = > {
-        frappe.call({
-            method: 'frappe.desk.doctype.desktop_icon.desktop_icon.hide',
-            args: {name: name},
-            freeze: true,
-            callback: (response) = >
-        {
-            if(response.message)
-    {
-        location.reload();
-    }
-    }
-    })
-
-    dialog.hide();
-
-    clearWiggle();
-    })
-    ;
-    // Hacks, Hacks and Hacks.
-    var $cancel = dialog.get_close_btn();
-    $cancel.click(() = > {
-        clearWiggle();
-    })
-    ;
-    $cancel.html(__(`Cancel`));
-
-    dialog.show();
-    })
-    ;
-    })
-    ;
-
-    $icons.addClass('wiggle');
-
-    },
-    DURATION_LONG_PRESS
-    )
-    ;
-    })
-    ;
-    frappe.desktop.wrapper.on('mouseup mouseleave', '.app-icon', () = > {
-        clearTimeout(timer_id);
-    })
-    ;
-
-    // also stop wiggling if clicked elsewhere.
-    $('body').click((event) = > {
-        if(frappe.desktop.wiggling
-    )
-    {
-        const $target = $(event.target);
-        // our target shouldn't be .app-icons or .close
-        const $parent = $target.parents('.case-wrapper');
-        if ($parent.length == 0)
-            clearWiggle();
-    }
-    })
-    ;
-    // end wiggle
-    },
-
-    open_module: function (parent) {
-        var link = parent.attr("data-link");
-        if (link) {
-            if (link.indexOf('javascript:') === 0) {
-                eval(link.substr(11));
-            } else if (link.substr(0, 1) === "/" || link.substr(0, 4) === "http") {
-                window.open(link, "_blank");
-            } else {
-                frappe.set_route(link);
-            }
-            return false;
-        } else {
-            var module = frappe.get_module(parent.attr("data-name"));
-            if (module && module.onclick) {
-                module.onclick();
-                return false;
-            }
-        }
-    }
-    ,
-
-    make_sortable: function () {
-        if (frappe.dom.is_touchscreen() || frappe.list_desktop) {
-            return;
-        }
-
-        new Sortable($("#icon-grid").get(0), {
-            onUpdate: function (event) {
-                var new_order = [];
-                $("#icon-grid .case-wrapper").each(function (i, e) {
-                    new_order.push($(this).attr("data-name"));
-                });
-
-                frappe.call({
-                    method: 'frappe.desk.doctype.desktop_icon.desktop_icon.set_order',
-                    args: {
-                        'new_order': new_order,
-                        'user': frappe.session.user
-                    },
-                    quiet: true
-                });
-            }
-        });
-    }
-    ,
-
-    set_background: function () {
-        frappe.ui.set_user_background(frappe.boot.user.background_image, null,
-            frappe.boot.user.background_style);
-    }
-    ,
-
-    show_pending_notifications: function () {
-        var modules_list = frappe.get_desktop_icons();
-        for (var i = 0, l = modules_list.length; i < l; i++) {
-            var module = modules_list[i];
-
-            var module_doctypes = frappe.boot.notification_info.module_doctypes[module.module_name];
-
-            var sum = 0;
-            if (module_doctypes) {
-                if (frappe.boot.notification_info.open_count_doctype) {
-                    // sum all doctypes for a module
-                    for (var j = 0, k = module_doctypes.length; j < k; j++) {
-                        var doctype = module_doctypes[j];
-                        sum += (frappe.boot.notification_info.open_count_doctype[doctype] || 0);
-                    }
-                }
-            } else if (frappe.boot.notification_info.open_count_doctype
-                && frappe.boot.notification_info.open_count_doctype[module.module_name] != null) {
-                // notification count explicitly for doctype
-                sum = frappe.boot.notification_info.open_count_doctype[module.module_name];
-
-            } else if (frappe.boot.notification_info.open_count_module
-                && frappe.boot.notification_info.open_count_module[module.module_name] != null) {
-                // notification count explicitly for module
-                sum = frappe.boot.notification_info.open_count_module[module.module_name];
-            }
-
-            // if module found
-            if (module._id.indexOf('/') === -1) {
-                var notifier = $(".module-count-" + module._id);
-                if (notifier.length) {
-                    notifier.toggle(sum ? true : false);
-                    var circle = notifier.find(".circle-text");
-                    var text = sum || '';
-                    if (text > 99) {
-                        text = '99+';
-                    }
-
-                    if (circle.length) {
-                        circle.html(text);
-                    } else {
-                        notifier.html(text);
-                    }
-                }
-            }
-        }
-    }
-    })
-    ;
-
-
-    $.extend(frappe._messages, {})</script>
-    <style type="text/css">#page-desktop {
-        background: url("/files/Solid-Gray-Background-for-Free.jpg") center center;
-        background-attachment: fixed;
-        background-size: cover;
-    }</style>
 </head>
-<body data-ajax-state="complete" data-route="" data-sidebar="0" class="no-breadcrumbs">
+<body>
 
-<div class="main-section">
-    <header>
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header navbar-desk"><a class="navbar-brand toggle-sidebar visible-xs visible-sm"> <i
-                        class="octicon octicon-three-bars"></i> </a> <a
-                        class="navbar-brand navbar-home hidden-xs hidden-sm" href="http://18.217.245.26/desk#"><img
-                        class="erpnext-icon" src="file://assets/erpnext/images/erp-icon.svg"></a>
-                    <ul class="nav navbar-nav" id="navbar-breadcrumbs"></ul>
-                </div>
-                <div class="navbar-center ellipsis" style="display: none;"></div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="user-progress hide" title="Your Setup Progress"><a class="dropdown-toggle"
-                                                                                  data-toggle="dropdown"
-                                                                                  href="http://18.217.245.26/desk#"
-                                                                                  onclick="return false;"
-                                                                                  style="height: 40px;">
-                        <div class="progress-chart" style
-                        "width:="" 50px;="" margin-top:="" 8px;"="">
-                        <div class="progress">
-                            <div class="progress-bar"></div>
-                        </div>
+
+<!--initialize App name space-->
+<script>
+    Attendance = {allowedShifts: [],
+        alert:function(title,message,type){
+        /*
+        * type :["warning", "error", "success" ,"info"]
+        * */
+        swal(title, message, type);
+        }};
+</script>
+<!--component selectors-->
+<script src="./selectors.js"></script>
+<!--data loader and templates initializer-->
+<script src="./loader.js"></script>
+<!--table behaviors -->
+<script src="./table.js"></script>
+<!--main app functionality -->
+<script src="./app.js"></script>
+
+<!--main table-->
+
+
+<!--<div class="container-fluid">-->
+<!--<div class="row ">-->
+<!--<div class="col-md-5 no-padding">-->
+<!--<button class="btn btn-block paging-button btn-paging">-->
+<!--&#9664;-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="col-md-2 text-center" id="week-title">Jan</div>-->
+<!--<div class="col-md-5 no-padding">-->
+<!--<button class="btn btn-block paging-button btn-paging">-->
+<!--&#9654;-->
+<!--</button>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<div class="container-fluid">
+    <div class="row ">
+        <table class="table" id="mainTable">
+            <thead>
+
+            <tr class="staff-row ">
+
+                <th class="day-nums" colspan="2">
+                    HIJRAH
+                </th>
+                <script>
+                    (function () {
+                        for (var i = 0; i < 28; i++) {
+
+                            document.write('<th class="day-nums col-xs-1">' + (i + 1) + '</th>');
+                        }
+                    })()
+                </script>
+            </tr>
+            <tr class="staff-row">
+                <th class="day-nums" colspan="2">Days</th>
+
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th class="col-division-left">
+                    <span class="badge badge-pill badge-warning">F</span>
+                </th>
+                <th class="col-division-right">
+                    <span class="badge badge-pill badge-warning">S</span>
+                </th>
+
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th class="col-division-left">
+                    <span class="badge badge-pill badge-warning">F</span>
+                </th>
+                <th class="col-division-right">
+                    <span class="badge badge-pill badge-warning">S</span>
+                </th>
+
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th class="col-division-left">
+                    <span class="badge badge-pill badge-warning">F</span>
+                </th>
+                <th class="col-division-right">
+                    <span class="badge badge-pill badge-warning">S</span>
+                </th>
+
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th class="col-division-left">
+                    <span class="badge badge-pill badge-warning">F</span>
+                </th>
+                <th class="col-division-right">
+                    <span class="badge badge-pill badge-warning">S</span>
+                </th>
+
+
+            </tr>
+            <tr class="staff-row">
+                <th class="day-nums" colspan="2">GREGORIAN</th>
+                <script>
+                    (function () {
+                        for (var i = 0; i < 28; i++)
+                            document.write('<th class="day-nums">' + (i + 1) + '</th>');
+                    })()
+                </script>
+            </tr>
+            <tr class="staff-row">
+                <th class="day-nums" colspan="2">
+                    <div class="input-group">
+
+                        <input type="text" id="search-box" placeholder="Search..." class="form-control">
+                    </div>
+                </th>
+                <th colspan="1000" id="search-status"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<!--modal popup-->
+
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="">Manage shifts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            </a>    </li>
-            <li class="visible-xs"><a class="navbar-search-button" href="http://18.217.245.26/desk#" data-toggle="modal"
-                                      data-target="#search-modal"><i class="octicon octicon-search"></i></a></li>
-            <li class="dropdown dropdown-navbar-user dropdown-mobile"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                         href="http://18.217.245.26/desk#"
-                                                                         onclick="return false;"> <span
-                    class="avatar avatar-small" title="Administrator">			<div class="standard-image"
-                                                                                       style="background-color: #fafbfc;">A</div></span>
-                <span class="ellipsis toolbar-user-fullname hidden-xs hidden-sm">      Administrator</span> <b
-                        class="caret hidden-xs hidden-sm"></b></a>
-                <ul class="dropdown-menu" id="toolbar-user" role="menu">
-                    <li class="navbar-set-desktop-icons"><a href="http://18.217.245.26/desk#modules_setup"> Set Desktop
-                        Icons</a></li>
-                    <li><a href="http://18.217.245.26/desk#Form/User/Administrator"> My Settings</a></li>
-                    <li><a href="http://18.217.245.26/desk#" onclick="return frappe.ui.toolbar.clear_cache();">
-                        Reload</a></li>
-                    <li><a href="http://18.217.245.26/index" target="_blank" rel="noopener noreferrer"> View Website</a>
-                    </li>
-                    <li><a href="http://18.217.245.26/desk#background_jobs"> Background Jobs</a></li>
-                    <li class="divider"></li>
-                    <li><a href="http://18.217.245.26/desk#" onclick="return frappe.app.logout();"> Logout</a></li>
-                </ul>
-            </li>
-            <li class="dropdown dropdown-help dropdown-mobile"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                  href="http://18.217.245.26/desk#"
-                                                                  onclick="return false;" style="height: 40px;"> <span
-                    class="hidden-xs hidden-sm" style="line-height: 24px;">Help <b class="caret"></b></span> <span
-                    class="visible-xs visible-sm standard-image"
-                    style="padding: 50% 7px; font-size: 17px; background-color: #fafbfc; font-weight: 100;">?</span>
-            </a>
-                <ul class="dropdown-menu" role="menu">
-                    <div class="input-group" style="border-bottom: 1px solid #d1d8dd;"><input id="input-help"
-                                                                                              type="text"
-                                                                                              placeholder="What do you need help with?"
-                                                                                              autofocus=""> <span
-                            class="input-group-btn"><button class="btn btn-default">Go</button></span></div>
-                    <li id="help-links"></li>
-                    <li class="divider" style="display: none;"></li>
-                    <li><a data-link-type="documentation" data-path="/documentation/index" target="_blank"
-                           rel="noopener noreferrer">Documentation</a></li>
-                    <li><a data-link-type="forum" href="https://discuss.erpnext.com/" target="_blank">User Forum</a>
-                    </li>
-                    <li><a href="https://gitter.im/frappe/erpnext" target="_blank">Chat</a></li>
-                    <li><a href="https://github.com/frappe/erpnext/issues" target="_blank">Report an Issue</a></li>
-                    <li><a data-link-type="forum" href="https://discuss.erpnext.com" target="_blank">User Forum</a></li>
-                    <li><a href="https://gitter.im/frappe/erpnext" target="_blank">Chat</a></li>
-                    <li><a href="https://github.com/frappe/erpnext/issues" target="_blank">Report an Issue</a></li>
-                    <li class="divider documentation-links"></li>
-                    <li><a href="http://18.217.245.26/desk#" onclick="return frappe.ui.toolbar.show_about();"> About</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown dropdown-navbar-new-comments dropdown-mobile"><a class="btn dropdown-toggle"
-                                                                                 data-toggle="dropdown"
-                                                                                 aria-haspopup="true"
-                                                                                 aria-expanded="true"> <span
-                    class="navbar-new-comments navbar-new-comments-true">3</span> </a>
-                <ul class="dropdown-menu" id="dropdown-notification" role="menu"
-                    style="max-height: 480px; overflow-y: auto;">
-                    <li><a class="badge-hover" data-doctype="Chat">Chat
-                        <span class="badge pull-right">1</span>
-                    </a></li>
-                    <li class="divider"></li>
-                    <li><a class="badge-hover" data-doctype="Project">Project
-                        <span class="badge pull-right">1</span>
-                    </a></li>
-                    <li><a class="badge-hover" data-doctype="Task">Task
-                        <span class="badge pull-right">1</span>
-                    </a></li>
-                </ul>
-            </li>
-            </ul>
-            <div id="search-modal" class="modal fade" role="dialog">
-                <div class="modal-dialog" style="height: 50px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <form role="search" onsubmit="return false;">
-                                <div class="input-group" style="width: 100%">
-                                    <div class="awesomplete">
-                                        <div class="awesomplete"><input id="modal-search" type="text"
-                                                                        class="form-control"
-                                                                        placeholder="Search or type a command"
-                                                                        aria-haspopup="true" autocomplete="off"
-                                                                        aria-autocomplete="list">
-                                            <ul hidden=""></ul>
-                                            <span class="visually-hidden" role="status" aria-live="assertive"
-                                                  aria-relevant="additions"></span></div>
-                                        <ul hidden=""></ul>
-                                        <span class="visually-hidden" role="status" aria-live="assertive"
-                                              aria-relevant="additions"></span></div>
-                                    <button type="reset" class="close"><i class="octicon octicon-x"></i></button>
+            <div class="modal-body">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab" aria-controls="nav-home" aria-selected="true">Assign Shift</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab" aria-controls="nav-profile" aria-selected="false">Shift Roles</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <div class="form-group col-md-12">
+                                        <label class="control-label" for="days_list">Selected Days : </label>
+                                        <select class="selectpicker show-tick show-menu-arrow form-control"
+                                                id="days_list" name="days_list" multiple>
+                                            <optgroup label="Condiments" data-max-options="2">
+                                                <option>Mustard</option>
+                                                <option>Ketchup</option>
+                                                <option>Relish</option>
+                                            </optgroup>
+                                            <optgroup label="Breads" data-max-options="2">
+                                                <option>Plain</option>
+                                                <option>Steamed</option>
+                                                <option>Toasted</option>
+                                            </optgroup>
+                                        </select>
+
+                                    </div> -->
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label" for="days_list">Select Shifts : </label>
+                                        <select class="selectpicker show-tick show-menu-arrow form-control"
+                                                id="shifts_single_list" name="shifts_single_list">
+                                            <optgroup label="ACLS" data-max-options="42">
+                                                <option>D1</option>
+                                                <option>D2</option>
+                                                <option>D3</option>
+                                            </optgroup>
+                                            <optgroup label="BLS" data-max-options="42">
+                                                <option>D5</option>
+                                                <option>D6</option>
+                                                <option>D7</option>
+                                            </optgroup>
+                                        </select>
+
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="set_single_shift">Set Shift</button>
+                                <button type="button" class="btn btn-primary" id="set_vacation">Set Vacation</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label" for="shifts_list">Choose Shifts : </label>
+                                        <select class="selectpicker show-tick show-menu-arrow form-control"
+                                                id="shifts_list" name="shifts_list" multiple>
+                                            <optgroup label="ACLS" data-max-options="42">
+                                                <option>D1</option>
+                                                <option>D2</option>
+                                                <option>D3</option>
+                                            </optgroup>
+                                            <optgroup label="BLS" data-max-options="42">
+                                                <option>D5</option>
+                                                <option>D6</option>
+                                                <option>D7</option>
+                                            </optgroup>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="set_shifts">Set Allowed Shifts
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hidden-xs">
-                <form class="navbar-form navbar-right" role="search" onsubmit="return false;">
-                    <div class="form-group form-group-sm ui-front">
-                        <div class="awesomplete">
-                            <div class="awesomplete"><input id="navbar-search" type="text" class="form-control"
-                                                            placeholder="Search or type a command (Ctrl + G)"
-                                                            aria-haspopup="true" autocomplete="off"
-                                                            aria-autocomplete="list">
-                                <ul hidden=""></ul>
-                                <span class="visually-hidden" role="status" aria-live="assertive"
-                                      aria-relevant="additions"></span></div>
-                            <ul hidden=""></ul>
-                            <span class="visually-hidden" role="status" aria-live="assertive"
-                                  aria-relevant="additions"></span></div>
-                       </div>
-                </form>
-            </div>
         </div>
-</div>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header navbar-desk"><a class="navbar-brand toggle-sidebar visible-xs visible-sm"> <i
-                class="octicon octicon-three-bars"></i> </a> <a class="navbar-brand navbar-home hidden-xs hidden-sm"
-                                                                href="#"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<g>
-	<path fill="#7574FF" d="M512,448c0,35.2-28.8,64-64,64H64c-35.2,0-64-28.8-64-64V64C0,28.8,28.8,0,64,0h384c35.2,0,64,28.8,64,64   V448z"/>
-</g>
-<g>
-	<path fill="#FFFFFF" d="M150.483,371.684V141.15c0-15.167,9.534-25.133,23.833-25.133h162.5c13.866,0,20.8,6.933,20.8,18.633v2.6   c0,12.133-6.934,18.633-20.8,18.633h-141.7v78.434h109.634c14.3,0,20.8,6.066,20.8,17.767v1.3c0,12.133-6.934,18.633-20.8,18.633   H195.117v84.934h144.3c13.867,0,20.367,6.066,20.367,17.767v2.167c0,12.566-6.5,19.5-20.367,19.5h-165.1   C160.017,396.384,150.483,386.851,150.483,371.684z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<head xmlns=""/></svg></a>
-            <ul class="nav navbar-nav" id="navbar-breadcrumbs"></ul>
-        </div>
-        <div class="navbar-center ellipsis" style="display: none;"></div>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="user-progress hide" title="Your Setup Progress"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                          href="#" onclick="return false;"
-                                                                          style="height: 40px;">
-                <div class="progress-chart" style
-                "width:="" 50px;="" margin-top:="" 8px;"="">
-                <div class="progress">
-                    <div class="progress-bar"></div>
-                </div>
     </div>
-    </a>    </li>
-    <li class="visible-xs"><a class="navbar-search-button" href="#" data-toggle="modal" data-target="#search-modal"><i
-            class="octicon octicon-search"></i></a></li>
-    <li class="dropdown dropdown-navbar-user dropdown-mobile"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                                                                 onclick="return false;"> <span
-            class="avatar avatar-small" title="Administrator">			<div class="standard-image"
-                                                                               style="background-color: #fafbfc;">A</div></span>
-        <span class="ellipsis toolbar-user-fullname hidden-xs hidden-sm">      Administrator</span> <b
-                class="caret hidden-xs hidden-sm"></b></a>
-        <ul class="dropdown-menu" id="toolbar-user" role="menu">
-            <li class="navbar-set-desktop-icons"><a href="#modules_setup"> Set Desktop Icons</a></li>
-            <li><a href="#Form/User/Administrator"> My Settings</a></li>
-            <li><a href="#" onclick="return frappe.ui.toolbar.clear_cache();"> Reload</a></li>
-            <li><a href="/index" target="_blank" rel="noopener noreferrer"> View Website</a></li>
-            <li><a href="#background_jobs"> Background Jobs</a></li>
-            <li class="divider"></li>
-            <li><a href="#" onclick="return frappe.app.logout();"> Logout</a></li>
-        </ul>
-    </li>
-    <li class="dropdown dropdown-help dropdown-mobile"><a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                                                          onclick="return false;" style="height: 40px;"> <span
-            class="hidden-xs hidden-sm" style="line-height: 24px;">Help <b class="caret"></b></span> <span
-            class="visible-xs visible-sm standard-image"
-            style="padding: 50% 7px; font-size: 17px; background-color: #fafbfc; font-weight: 100;">?</span> </a>
-        <ul class="dropdown-menu" role="menu">
-            <div class="input-group" style="border-bottom: 1px solid #d1d8dd;"><input id="input-help" type="text"
-                                                                                      placeholder="What do you need help with?"
-                                                                                      autofocus=""> <span
-                    class="input-group-btn"><button class="btn btn-default">Go</button></span></div>
-            <li id="help-links"></li>
-            <li class="divider" style="display: none;"></li>
-            <li><a data-link-type="documentation" data-path="/documentation/index" target="_blank"
-                   rel="noopener noreferrer">Documentation</a></li>
-            <li><a data-link-type="forum" href="https://discuss.erpnext.com" target="_blank">User Forum</a></li>
-            <li><a href="https://gitter.im/frappe/erpnext" target="_blank">Chat</a></li>
-            <li><a href="https://github.com/frappe/erpnext/issues" target="_blank">Report an Issue</a></li>
-            <li class="divider documentation-links"></li>
-            <li><a href="#" onclick="return frappe.ui.toolbar.show_about();"> About</a></li>
-        </ul>
-    </li>
-    <li class="dropdown dropdown-navbar-new-comments dropdown-mobile"><a class="btn dropdown-toggle"
-                                                                         data-toggle="dropdown" aria-haspopup="true"
-                                                                         aria-expanded="true"> <span
-            class="navbar-new-comments navbar-new-comments-true">3</span> </a>
-        <ul class="dropdown-menu" id="dropdown-notification" role="menu"
-            style="max-height: 480px; overflow-y: auto;"></ul>
-    </li>
-    </ul>
-    <div id="search-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog" style="height: 50px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <form role="search" onsubmit="return false;">
-                        <div class="input-group" style="width: 100%"><input id="modal-search" type="text"
-                                                                            class="form-control"
-                                                                            placeholder="Search or type a command"
-                                                                            aria-haspopup="true">
-                            <button type="reset" class="close"><i class="octicon octicon-x"></i></button>
+</div>
+
+<script id="staff-row" type="text/html">
+
+    {{#users}}
+    <tr class="staff-row " data-id="{{idx}}">
+        <th colspan="2" class=" fixed-layout-table">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4 no-padding">
+                            <img src="./assets/{{img}}" width="50" height="50"
+                                 class="img-thumbnail rounded-circle"/>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="hidden-xs">
-        <form class="navbar-form navbar-right" role="search" onsubmit="return false;">
-            <div class="form-group form-group-sm ui-front"><input id="navbar-search" type="text" class="form-control"
-                                                                  placeholder="Search or type a command (Ctrl + G)"
-                                                                  aria-haspopup="true"> </div>
-        </form>
-    </div>
-</div>
-</div> </header>
-<div id="body_div">
-    <div class="content page-container" id="page-query-report" data-page-route="query-report" style="">
-        <div class="page-head">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-8 col-xs-6 page-title">
-                        <h1>
-                            <div class="title-image hide hidden-md hidden-lg"></div>
-                            <div class="ellipsis title-text">Trial</div>
-                            <span class="indicator hide"></span></h1>
+                        <div class="col-md-8 padding-1">
+                            <span class="username" style="vertical-align: sub; text-transform: capitalize;">{{name}}</span>
+                        </div>
                     </div>
-                    <div class="text-right col-md-5 col-sm-4 col-xs-6 page-actions"><span
-                            class="checked-items-status text-ellipsis text-muted small hide hidden-xs hidden-sm"
-                            style="margin-right: 20px;">## items selected</span>     <h6
-                            class="ellipsis sub-heading hide text-muted"></h6>     <span
-                            class="page-icon-group hide hidden-xs hidden-sm"></span>
-                        <div class="btn-group menu-btn-group">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                                    aria-expanded="false"><span class="hidden-xs">        <span
-                                    class="menu-btn-group-label">Menu</span>        <span class="caret"></span></span>
-                                <span class="visible-xs"><i class="octicon octicon-triangle-down"></i></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a class="grey-link">Edit</a></li>
-                                <li></li>
-                                <li><a class="grey-link">Print</a></li>
-                                <li></li>
-                                <li><a class="grey-link">PDF</a></li>
-                                <li></li>
-                                <li><a class="grey-link">Export</a></li>
-                                <li></li>
-                                <li><a class="grey-link">Setup Auto Email</a></li>
-                                <li></li>
-                                <li><a class="grey-link">User Permissions</a></li>
-                                <li></li>
-                                <li><a class="grey-link">Add to Desktop</a></li>
-                                <li></li>
+                    <div class="row">
+                        <div class="col-md-12 no-padding">
+                            <hr class="devider"/>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <span class="badge badge-light badge-1">0</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="badge badge-light badge-2">0</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="badge badge-light badge-3">0</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="badge badge-light badge-4">0</span>
+                                </li>
                             </ul>
                         </div>
-                        <button class="btn btn-secondary btn-default btn-sm">Refresh</button>
-                        <div class="btn-group actions-btn-group hide">
-                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown"
-                                    aria-expanded="false"><span class="hidden-xs">          Actions <span
-                                    class="caret"></span>         </span> <span
-                                    class="visible-xs octicon octicon-check"></span></button>
-                            <ul class="dropdown-menu" role="menu"></ul>
-                        </div>
-                        <button class="btn btn-primary btn-sm hide primary-action"></button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="content page-container" id="" data-page-route="desktop" style="">
-        <div style="clear: both"></div>
 
-    </div>
-</div>
-<div class="main-container-space">
-    <iframe src="table.html" width="100%" height="100%" />
-</div>
-<footer></footer>
-</div>
+        </th>
+        {{#months}}
+        {{#days}}
+        <td class="day-nums col-xs-1" data-day="{{key}}">
+            <div class="content">
+              <span class="badge badge-info hidden  badge-center">
+                  {{val}}
+               </span>
+            </div>
+        </td>
+        {{/days}}
+        {{/months}}
 
 
+    </tr>
+
+    {{/users}}
+</script>
 </body>
 </html>
