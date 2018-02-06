@@ -1,0 +1,156 @@
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 150%;
+    empty-cells:show;
+}
+
+.col-division-right{
+    border-right: 5px solid #eee !important;
+}
+.col-division-left{
+    border-left: 5px solid #eee !important;
+}
+
+td, th {
+    width: 33.33%;
+
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+    background-color: #fff;
+
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.bootstrap-select.btn-group .dropdown-menu.inner {
+    display: block;
+}
+th.day-nums{
+    height:30px;
+    font-size: smaller;
+    border:none;
+    border-top: 2px solid #dee2e6;
+    vertical-align: middle !important;
+}
+
+td.day-nums{
+    height:30px;
+    padding:4px;
+    font-size: small;
+}
+td,th{
+    overflow:hidden;
+    empty-cells: show;
+}
+
+.content , .content .badge{
+    pointer-events: none;
+}
+
+td .content {
+    text-align: center;
+    vertical-align: middle;
+    width:30px;
+    height:48px;
+}
+th .content{
+
+    width:130px;
+    height:87px;
+}
+
+tbody tr th:first-child{
+    line-height: 11px;
+
+}
+.devider{
+    margin-top: .2rem;
+    margin-bottom: .8rem;
+}
+
+tr:nth-child(odd) td{
+    background-color:rgba(239, 239, 239, .1);
+}
+
+.not-allowed{
+    background-color:  #cb0e40 !important;
+}
+#search-status{
+    text-align: left;
+    text-transform: capitalize;
+}
+.vacation {
+    background-color: rgba(139, 195, 74,.3) !important ;
+}
+.highlight {
+    background-color:rgba(137, 207, 240, .3) !important;
+}
+tr td:hover{
+    background: rgba(237,233,206,0.1);
+
+}
+/*staff cells styles begin*/
+.staff-cell>td:first-child,th:first-child{
+    //resize: both;
+    padding:1px;
+}
+/*table style done*/
+
+.paging-button {
+    background: rgba(255, 255, 255, 0);
+    font-family: Sans-serif;
+
+    text-align: center;
+    border: 0;
+    transition: all 0.5s ease 0s;
+}
+
+.paging-button:hover {
+    background: rgba(237,233,206,0.5);
+
+}
+
+#week-title {
+    padding-top: 5px;
+}
+
+.btn-paging {
+    width: 100%;
+}
+/*header done*/
+
+.table-wrapper{
+    overflow-x: scroll;
+    width:100%;
+}
+
+
+.badges-list {
+
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+.no-margin {
+   margin: 0px !important;
+}
+
+.padding-1{
+    padding:3px !important;
+}
+.no-hover:hover{
+    background:none !important;
+}
+.badge-center{
+ margin-top:50% !important;
+}
+
