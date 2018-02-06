@@ -4,7 +4,7 @@ table {
     border-collapse: collapse;
     width: 150%;
     empty-cells:show;
-    font-size:small;
+
 }
 
 .col-division-right{
@@ -91,13 +91,16 @@ tr:nth-child(odd) td{
 .not-allowed{
     background-color:  #cb0e40 !important;
 }
+
 #search-status{
     text-align: left;
     text-transform: capitalize;
 }
+
 .light-gray{
     background-color:#eee !important;
 }
+
 .vacation {
     background-color: rgba(139, 195, 74,.3) !important ;
 }
