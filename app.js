@@ -2,10 +2,9 @@ Attendance.color_weekends = function () {
     var tds = $('.staff-row td');
 
     for (i = 5, j = 6; i < tds.length , j < tds.length; i += 7, j += 7) {
-        $(tds[i]).addClass('col-division-left')
-        .html('<div class="content"> <span class="badge   badge-warning badge-center">' + $(tds[i]).text() + '</span> </div>')
-        $(tds[j]).addClass('col-division-right')
-        .html('<div class="content"> <span class="badge   badge-warning badge-center">' + $(tds[j]).text() + '</span> </div>')
+        const first = $(tds[i]).text(), second = $(tds[j]).text();
+        $(tds[i]).addClass('col-division-left light-gray').html('<div class="content"> <span class="badge   badge-warning badge-center' + (!first.match(/\w/g) ? ' hidden' : '') + '">' + first + '</span> </div>')
+        $(tds[j]).addClass('col-division-right light-gray').html('<div class="content"> <span class="badge   badge-warning badge-center' + (!second.match(/\w/g) ? ' hidden' : '') + '">' + second + '</span> </div>')
     }
 }
 
@@ -23,8 +22,7 @@ Attendance.calculateHours = function (tr) {
         chunk = 0, last3 = [];
     $(tr).find('td').removeClass('not-allowed');
     for (var i = 0; i < tds.length; i++) {
-        if (!$(tds[i]).find('.badge').text().match('\w')) {
-
+        if ($(tds[i]).find('.badge').text().match(/\w/g, '') ) {
 
             if (i < 7) {
                 badges[0] += 12;
@@ -64,7 +62,7 @@ Attendance.calculateHours = function (tr) {
         last3 = [];
     }
     Attendance.revokeNotAllowed(function (tds) {
-        if ((tds && tds.length)) {
+        if ((tds && tds.length>4)) {
             Attendance.alert('No More than 4 days in a row', 'hey there , ' +
                 'you cant assign more than 4 days in a row in one week break them if you have to, ' +
                 'just try not to break the 45 hours per week wage', 'error');
@@ -84,13 +82,12 @@ Attendance.calculateHours = function (tr) {
 
     });
 
-    Attendance.color_weekends();
 
 
 }
 Attendance.setShift = function (shift) {
     $('.highlight').removeClass('vacation');
-    $('.highlight .content .badge').html(shift).removeClass('highlight')
+    $('.highlight .content .badge').html(shift).removeClass('highlight').removeClass('hidden')
 
     //hours per week
 
@@ -163,13 +160,13 @@ $(function () {
     });
 
 
-
     Attendance.initialize();
     Attendance.fillTable();
-    Attendance.color_weekends();
-    $('tbody tr').each(function(idx,val){
+    $('tbody tr').each(function (idx, val) {
         Attendance.calculateHours($(val));
     })
+    Attendance.color_weekends();
+
 
 })
 $(document).ready(function () {
@@ -179,12 +176,12 @@ $(document).ready(function () {
     var isCtrlDown = false;
 
 
-    $('body').on('keydown',function(e){
-        if(e.keyCode===17)
-            isCtrlDown=true;
-    }).on('keyup',function(e){
-        if(e.keyCode===17)
-            isCtrlDown=false;
+    $('body').on('keydown', function (e) {
+        if (e.keyCode === 17)
+            isCtrlDown = true;
+    }).on('keyup', function (e) {
+        if (e.keyCode === 17)
+            isCtrlDown = false;
     })
     $('table').mousedown(function (e) {
         e.stopPropagation();
@@ -214,12 +211,12 @@ $(document).ready(function () {
         if (isMouseDown)
             if (lastTr !== ctr) {
 
-                Attendance.statusBar('idle', ' ','');
+                Attendance.statusBar('idle', ' ', '');
                 $('td').removeClass('highlight');
             }
             else {
                 $(this).addClass("highlight");
-                Attendance.statusBar($('td.highlight').length, ' selected Cells','');
+                Attendance.statusBar($('td.highlight').length, ' selected Cells', '');
 
             }
 
@@ -228,7 +225,7 @@ $(document).ready(function () {
 
     $("table td").click(function (e) {
         $(e.target).toggleClass('highlight');
-        Attendance.statusBar(1, ' selected Cell','');
+        Attendance.statusBar(1, ' selected Cell', '');
 
 
     });

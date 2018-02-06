@@ -7,10 +7,10 @@ table {
 }
 
 .col-division-right{
-    border-right: 5px solid #eee !important;
+    border-right: 5px solid #ccc !important;
 }
 .col-division-left{
-    border-left: 5px solid #eee !important;
+    border-left: 5px solid #ccc !important;
 }
 
 td, th {
@@ -71,6 +71,12 @@ tbody tr th:first-child{
     line-height: 11px;
 
 }
+.hidden{
+    display:none !important;
+}
+
+
+
 .devider{
     margin-top: .2rem;
     margin-bottom: .8rem;
@@ -87,9 +93,13 @@ tr:nth-child(odd) td{
     text-align: left;
     text-transform: capitalize;
 }
+.light-gray{
+    background-color:#eee !important;
+}
 .vacation {
     background-color: rgba(139, 195, 74,.3) !important ;
 }
+
 .highlight {
     background-color:rgba(137, 207, 240, .3) !important;
 }

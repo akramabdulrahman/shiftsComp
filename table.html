@@ -12,7 +12,6 @@
           href="https://cdn.rawgit.com/infostreams/bootstrap-select/fd227d46de2afed300d97fd0962de80fa71afb3b/dist/css/bootstrap-select.min.css"/>
 
     <link href="./style.css" rel="stylesheet"/>
-
     <!--libs-->
     <script src="lib/js/jquery.min.js"></script>
     <script src="lib/js/ICanHaz.min.js"></script>
@@ -51,7 +50,22 @@
 <!--main table-->
 
 
+<!--<div class="container-fluid">-->
+<!--<div class="row ">-->
+<!--<div class="col-md-5 no-padding">-->
+<!--<button class="btn btn-block paging-button btn-paging">-->
+<!--&#9664;-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="col-md-2 text-center" id="week-title">Jan</div>-->
+<!--<div class="col-md-5 no-padding">-->
+<!--<button class="btn btn-block paging-button btn-paging">-->
+<!--&#9654;-->
+<!--</button>-->
+<!--</div>-->
 
+<!--</div>-->
+<!--</div>-->
 
 <div class="container-fluid">
     <div class="row ">
@@ -59,11 +73,8 @@
             <thead>
 
             <tr class="staff-row ">
-                <th class="day-nums" rowspan="3">
-                    <img src="./assets/h-logo.jpeg" width="200" height="200" class="img-thumbnail  "/>
 
-                </th>
-                <th class="day-nums">
+                <th class="day-nums" colspan="2">
                     HIJRAH
                 </th>
                 <script>
@@ -76,7 +87,7 @@
                 </script>
             </tr>
             <tr class="staff-row">
-                <th class="day-nums">Days</th>
+                <th class="day-nums" colspan="2">Days</th>
 
                 <th>S</th>
                 <th>M</th>
@@ -129,7 +140,7 @@
 
             </tr>
             <tr class="staff-row">
-                <th class="day-nums">GREGORIAN</th>
+                <th class="day-nums" colspan="2">GREGORIAN</th>
                 <script>
                     (function () {
                         for (var i = 0; i < 28; i++)

@@ -4,6 +4,7 @@ Attendance.fillTable = function () {
     if (!Attendance.staff) {
         return;
     }
+    console.log(Attendance.staff);
     var table = ich['staff-row'](Attendance.staff);
     $(Attendance.SELECTORS['MAIN_TABLE'] + ' tbody').append(table);
 
