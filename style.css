@@ -34,6 +34,7 @@ td, th {
 .bootstrap-select.btn-group .dropdown-menu.inner {
     display: block;
 }
+
 th.day-nums{
     height:30px;
     font-size: smaller;
@@ -47,6 +48,7 @@ td.day-nums{
     padding:4px;
     font-size: small;
 }
+
 td,th{
     overflow:hidden;
     empty-cells: show;
@@ -72,11 +74,10 @@ tbody tr th:first-child{
     line-height: 11px;
 
 }
+
 .hidden{
     display:none !important;
 }
-
-
 
 .devider{
     margin-top: .2rem;
