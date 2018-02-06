@@ -43,6 +43,9 @@ Attendance.calculateHours = function (tr) {
         }
 
         if (chunk > 4) {
+            Attendance.alert('No More than 4 days in a row', 'hey there , ' +
+                'you cant assign more than 4 days in a row in one week break them if you have to, ' +
+                'just try not to break the 45 hours per week wage', 'error');
             $(last3).each(function (idx, val) {
                 //   if ($(val).is('.highlight')) {
                 $(val).addClass('not-allowed').removeClass('highlight')
@@ -51,7 +54,10 @@ Attendance.calculateHours = function (tr) {
             });
 
         }
-        if ((chunk < 2)) {
+        if ((chunk == 1)) {
+            Attendance.alert('atleast 2 days in a row', 'hey there , ' +
+                'you cant assign less than 2 days in a row in one week break them if you have to, ' +
+                'just try not to break the 9 hours per week bare-minimum wage', 'error');
             $(last3).each(function (idx, val) {
                 //       if ($(val).is('.highlight')) {
                 $(val).addClass('not-allowed').removeClass('highlight')
@@ -63,9 +69,7 @@ Attendance.calculateHours = function (tr) {
     }
     Attendance.revokeNotAllowed(function (tds) {
         if ((tds && tds.length>4)) {
-            Attendance.alert('No More than 4 days in a row', 'hey there , ' +
-                'you cant assign more than 4 days in a row in one week break them if you have to, ' +
-                'just try not to break the 45 hours per week wage', 'error');
+
         } else {
             for (var i = 0; i < 4; i++) {
                 var badge = $(usr).find('.badge-' + (i + 1)).first();
